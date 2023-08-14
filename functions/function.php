@@ -8,5 +8,13 @@
             $data = htmlspecialchars($data);
             return $data;
         }
+
+        public function genelsorgu($vt, $sql, $tercih) {
+            $sorgu = $vt->prepare($sql);
+            $sorgu->execute();
+            if ($tercih == 1) {
+                return $sonuc = $sorgu->get_result();
+            }
+        }
     }
 ?>
