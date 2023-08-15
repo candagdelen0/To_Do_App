@@ -47,12 +47,18 @@
     }
 </style>
 
-
+<?php 
+    require "functions/function.php";
+    $sistem = new System;
+    $id = $_GET["id"];
+    $diz = $sistem->genelsorgu($db, "SELECT * FROM user WHERE id= $id",1);
+    while ($dizi = $diz->FETCH_ASSOC()):
+?>
 <nav class="navbar navbar-expand-lg bg-info">
     <div class="container">
-        <a href="homepage.php?id=" class="navbar-brand"><b>To Do App</b></a>
+        <a href="homepage.php?id=<?php echo $dizi["id"]; ?>" class="navbar-brand"><b>To Do App</b></a>
         <div class="navbar-nav dropdown me-2">
-            <button class="dropbtn nav-item">İsim</button>
+            <button class="dropbtn nav-item"><?php echo $dizi["ad"]; ?></button>
                 <div class="dropdown-content">
                     <a href=""><i class="fa-solid fa-id-card me-2" style="color: #000000;"></i> Bilgilerim</a>
                     <a href=""><i class="fa-solid fa-arrow-right-from-bracket me-2" style="color: #000000;"></i> Çıkış Yap</a>
@@ -60,10 +66,10 @@
         </div> 
     </div>
 </nav>
-
+<?php endwhile; ?>
 
 <div class="container">
-    <div class="row justify-content-around"> </div>
+    <div class="row justify-content-around">  </div>
     <div class="row fixed-bottom" style="background-color: #B0C4DE;">
         <div class="col-md-6 mt-3 mb-3 text-center border-bottom border-primary" style="font-size: 18px; padding: 5px;"><i class="fa-solid fa-check text-success"></i> Tamamlanan Görev: <span class="bg-success border-success text-white rounded ps-2 pe-2">5</span></div>
         <div class="col-md-6 mt-3 mb-3 text-center border-bottom border-primary" style="font-size: 18px; padding: 5px;"><i class="fa-solid fa-xmark text-danger"></i> Tamamlanmayan Görev: <span class="bg-danger border-danger text-white rounded ps-2 pe-2">3</span></div>
