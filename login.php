@@ -13,6 +13,29 @@
     </div>
 </nav>
 
+<?php
+    require "functions/function.php";
+
+    $sistem = new System;
+    if(@$_POST["submit"]) {
+        @$email = $sistem->safety($_POST["email"]);
+        @$password = md5(sha1($sistem->safety($_POST["password"])));  
+        $diz = $sistem->genelsorgu($db, "SELECT * FROM user WHERE email = '$email'",1);
+        if ($diz->num_rows == 0) {
+            echo '<div class="col-md-4 mx-auto alert alert-danger mt-3">Girilen e-mail adresi kayıtlı değil</div>';
+        } else {
+            while ($dizi = $diz->FETCH_ASSOC()) {
+                if ($password != $dizi["sifre"]) {
+                    echo '<div class="col-md-4 mx-auto alert alert-danger mt-3">Girilen şifre hatalı</div>';
+                } else {
+                    header("Location: index2.php");
+                }
+            }
+        }
+        
+    }
+
+?>
 
 <div class="container my-3">
     <div class="row">
