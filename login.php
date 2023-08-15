@@ -28,7 +28,7 @@
                 if ($password != $dizi["sifre"]) {
                     echo '<div class="col-md-4 mx-auto alert alert-danger mt-3">Girilen şifre hatalı</div>';
                 } else {
-                    header("Location: index2.php");
+                    header("Location: homepage.php");
                 }
             }
         }
