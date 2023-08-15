@@ -18,6 +18,7 @@
         }
 
         function haftagetir($vt) {
+            $id = $_GET["id"];
             $sonuc = $this->genelsorgu($vt, "SELECT * FROM haftalik",1);
             while ($dizi = $sonuc->FETCH_ASSOC()):
                 $gor = $this->genelsorgu($vt, 'SELECT * FROM tasks WHERE gunid ='.$dizi["id"].'',1);
@@ -33,7 +34,7 @@
                 }
 
                 echo '<div class="col-md-3 mt-4">  
-                    <a href="gundetay.php?gunid='.$dizi["id"].'" style="text-decoration: none;">          
+                    <a href="gundetay.php?id='.$id.'&gunid='.$dizi["id"].'" style="text-decoration: none;">               
                         <div class="card border-' . $bord . ' m-1 col-md-12 p-2" > 
                             <div class="card-body text-secondary"> 
                                 <p class="card-text">
