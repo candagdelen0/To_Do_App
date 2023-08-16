@@ -56,7 +56,7 @@
 ?>
 <nav class="navbar navbar-expand-lg bg-info">
     <div class="container">
-        <a href="homepage.php?id=<?php echo $dizi["id"]; ?>" class="navbar-brand"><b>To Do App</b></a>
+      <a href="<?php $_SERVER['PHP_SELF']; ?>" class="navbar-brand"><b>To Do App</b></a>
         <div class="navbar-nav dropdown me-2">
             <button class="dropbtn nav-item"><?php echo $dizi["ad"]; ?></button>
                 <div class="dropdown-content">
@@ -71,7 +71,7 @@
 <div class="container">
     <div class="row justify-content-around"> <?php $sistem->haftagetir($db); ?> </div>
     <div class="row fixed-bottom" style="background-color: #B0C4DE;">
-        <div class="col-md-6 mt-3 mb-3 text-center border-bottom border-primary" style="font-size: 18px; padding: 5px;"><i class="fa-solid fa-check text-success"></i> Tamamlanan Görev: <span class="bg-success border-success text-white rounded ps-2 pe-2">5</span></div>
+        <div class="col-md-6 mt-3 mb-3 text-center border-bottom border-primary" style="font-size: 18px; padding: 5px;"><i class="fa-solid fa-check text-success"></i> Tamamlanan Görev: <span class="bg-success border-success text-white rounded ps-2 pe-2"><?php $sistem->basari($db); ?></span></div>
         <div class="col-md-6 mt-3 mb-3 text-center border-bottom border-primary" style="font-size: 18px; padding: 5px;"><i class="fa-solid fa-xmark text-danger"></i> Tamamlanmayan Görev: <span class="bg-danger border-danger text-white rounded ps-2 pe-2">3</span></div>
         <div class="col-md-4 text-center mx-auto" >&copy; 2023 Copyright: CAN DAĞDELEN Tüm Hakları Saklıdır.</div>
     </div>
