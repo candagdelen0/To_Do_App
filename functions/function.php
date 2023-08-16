@@ -112,7 +112,13 @@
                                     </td>
                                     <td colspan="3">'.$dizi2["taskName"].'</td>
                                     <td colspan="1">';
-                                       
+                                        if($dizi2["status"]==0) {
+                                            echo "";
+                                        } elseif ($dizi2["status"]==1) {
+                                            echo '<i class="fa-solid fa-check fs-3" style="color: #59a824;"></i>';
+                                        } elseif ($dizi2["status"]==2) {
+                                            echo '<i class="fa-solid fa-xmark fs-3" style="color: #ff0000;"></i>';
+                                        }
                                     echo '</td>
                                     <td colspan="1">
                                         <a href=""><i class="fa-solid fa-pen-to-square me-2 fs-3" style="color: #f5ed00;"></i></a>
