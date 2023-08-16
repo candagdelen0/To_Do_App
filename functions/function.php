@@ -78,7 +78,10 @@
             }
             echo '<div class="row">
                 <div class="border-bottom mt-2">';
-                   
+                    $diz1 = $this->genelsorgu($vt, "SELECT * FROM haftalik WHERE id = $gunid",1);
+                    while ($dizi1 = $diz1->FETCH_ASSOC()):
+                        echo '<h1 class="text-center text-info">'.$dizi1["ad"].'</h1>';
+                    endwhile;
                 echo '</div>
                 <div class="col-md-10 mx-auto mt-4">
                     <form method="post">
