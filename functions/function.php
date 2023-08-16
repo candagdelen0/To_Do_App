@@ -104,7 +104,22 @@
                             </tr>
                         </thead>
                         <tbody>';
-                            
+                            $diz2 = $this->genelsorgu($vt, "SELECT * FROM tasks WHERE userid = $userid AND gunid = $gunid",1);
+                            while ($dizi2 = $diz2->FETCH_ASSOC()):
+                                echo '<tr class="text-center">
+                                    <td colspan="1">
+                                        <a href=""><i class="fa-solid fa-plus" style="color: #000000;"></i></a> | <a href=""><i class="fa-solid fa-xmark" style="color: #000000;"></i></a>
+                                    </td>
+                                    <td colspan="3">'.$dizi2["taskName"].'</td>
+                                    <td colspan="1">';
+                                       
+                                    echo '</td>
+                                    <td colspan="1">
+                                        <a href=""><i class="fa-solid fa-pen-to-square me-2 fs-3" style="color: #f5ed00;"></i></a>
+                                        <a href=""><i class="fa-regular fa-trash-can fs-3" style="color: #eb051c;"></i></a>
+                                    </td>
+                                </tr>';         
+                            endwhile;
                         echo '</tbody>
                     </table>
                 </div>
