@@ -67,7 +67,15 @@
         }
 
         public function detayGetir($vt) {
-          
+            $userid = $_GET["id"];
+            $gunid = $_GET["gunid"];
+            if (@$_POST["submit"]) {
+                $task = $_POST["task"];
+                $this->safety($task);
+                $this->genelsorgu($vt, "INSERT INTO tasks (userid, gunid, taskName) VALUES ($userid, $gunid, '$task')",1);
+                echo '<div class="col-md-8 mx-auto mt-3 alert alert-success">Yeni Görev Eklendi</div>';
+                header('refresh: 2, url=gundetay.php?id='.$userid.'&gunid='.$gunid);
+            }
             echo '<div class="row">
                 <div class="border-bottom mt-2">';
                    
