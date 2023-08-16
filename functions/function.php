@@ -58,6 +58,14 @@
             }
         }
 
+        public function failer($vt) {
+            $userid = $_GET["id"];
+            $variable = $this->genelsorgu($vt, "SELECT * FROM basariorani WHERE userid = $userid",1);
+            while ($veri = $variable->FETCH_ASSOC()) {
+                echo $veri["notdone"];
+            }
+        }
+
 
 
 
