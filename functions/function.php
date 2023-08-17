@@ -108,7 +108,7 @@
                             while ($dizi2 = $diz2->FETCH_ASSOC()):
                                 echo '<tr class="text-center">
                                     <td colspan="1">
-                                        <a href="checked.php?id='.$dizi2["id"].'"><i class="fa-solid fa-plus" style="color: #000000;"></i></a> | <a href="failer.php?id='.$dizi2["id"].'"><i class="fa-solid fa-xmark" style="color: #000000;"></i></a>
+                                        <a href="checked.php?id='.$dizi2["id"].'&userid='.$userid.'&gunid='.$gunid.'"><i class="fa-solid fa-plus" style="color: #000000;"></i></a> | <a href="failer.php?id='.$dizi2["id"].'&userid='.$userid.'&gunid='.$gunid.'"><i class="fa-solid fa-xmark" style="color: #000000;"></i></a>
                                     </td>
                                     <td colspan="3">'.$dizi2["taskName"].'</td>
                                     <td colspan="1">';
@@ -121,8 +121,8 @@
                                         }
                                     echo '</td>
                                     <td colspan="1">
-                                        <a href=""><i class="fa-solid fa-pen-to-square me-2 fs-3" style="color: #f5ed00;"></i></a>
-                                        <a href=""><i class="fa-regular fa-trash-can fs-3" style="color: #eb051c;"></i></a>
+                                        <a href="editTask.php?id='.$dizi2["id"].'&userid='.$userid.'&gunid='.$gunid.'"><i class="fa-solid fa-pen-to-square me-2 fs-3" style="color: #f5ed00;"></i></a>
+                                        <a href="deleteTask.php?id='.$dizi2["id"].'&userid='.$userid.'&gunid='.$gunid.'"><i class="fa-regular fa-trash-can fs-3" style="color: #eb051c;"></i></a>
                                     </td>
                                 </tr>';         
                             endwhile;
