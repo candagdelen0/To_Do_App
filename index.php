@@ -1,7 +1,20 @@
+<?php include "_header.php"; ?>
+<style>
+    #reg:hover {
+        background-color: white;
+    }
+</style>
+
+<nav class="navbar navbar-expand-lg bg-info">
+    <div class="container">
+        <a href="index.php" class="navbar-brand"><b>To Do App</b></a>
+        <ul class="navbar-nav me-2">
+            <li class="nav-item"><a href="login.php" class="nav-link border border-primary rounded" id="reg">Login</a></li>
+        </ul>
+    </div>
+</nav>
 <?php 
-    include "_header.php";
     require "functions/function.php";
-    
     $sistem = new System;
     $username = $password = $repassword = $email = "";
 
@@ -24,21 +37,6 @@
     endif;
 
 ?>
-<style>
-    #reg:hover {
-        background-color: white;
-    }
-</style>
-
-<nav class="navbar navbar-expand-lg bg-info">
-    <div class="container">
-        <a href="index.php" class="navbar-brand"><b>To Do App</b></a>
-        <ul class="navbar-nav me-2">
-            <li class="nav-item"><a href="login.php" class="nav-link border border-primary rounded" id="reg">Login</a></li>
-        </ul>
-    </div>
-</nav>
-
 <div class="container my-3">
     <div class="row">
         <div class="col-md-4 mx-auto">
