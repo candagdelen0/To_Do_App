@@ -1,4 +1,7 @@
-<?php include "_header.php"; ?>
+<?php 
+    include "_header.php"; 
+    session_start();
+?>
 <style>
     #reg:hover {
         background-color: white;
@@ -15,7 +18,6 @@
 
 <?php
     require "functions/function.php";
-
     $sistem = new System;
     if(@$_POST["submit"]) {
         @$email = $sistem->safety($_POST["email"]);
@@ -28,6 +30,7 @@
                 if ($password != $dizi["sifre"]) {
                     echo '<div class="col-md-4 mx-auto alert alert-danger mt-3">Girilen şifre hatalı</div>';
                 } else {
+                    $_SESSION['Kullanici'] = $dizi["ad"];
                     header("Location: homepage.php?id=".$dizi["id"]);
                 }
             }
@@ -43,7 +46,6 @@
             <div class="bg-primary mt-3 p-3 fs-3 text-center">Üye Girişi</div>
             <div class="p-4" style="background-color: #F0F8FF;">
                 <form method="post" enctype="multipart/form-data">
-                    
                     <div class="mb-3">
                         <label for="email">Email Adresi</label>
                         <input type="email" name="email" class="form-control" required>
