@@ -1,4 +1,7 @@
-<?php include "_header.php"; ?>
+<?php 
+  session_start();
+  include "_header.php"; 
+?>
 <style>
     .dropbtn {
         background-color: #0B5ED7;
@@ -58,7 +61,7 @@
     <div class="container">
       <a href="<?php $_SERVER['PHP_SELF']; ?>" class="navbar-brand"><b>To Do App</b></a>
         <div class="navbar-nav dropdown me-2">
-            <button class="dropbtn nav-item"><?php echo $dizi["ad"]; ?></button>
+            <button class="dropbtn nav-item"><?php echo $_SESSION['Kullanici']; ?></button>
                 <div class="dropdown-content">
                     <a href=""><i class="fa-solid fa-id-card me-2" style="color: #000000;"></i> Bilgilerim</a>
                     <a href=""><i class="fa-solid fa-arrow-right-from-bracket me-2" style="color: #000000;"></i> Çıkış Yap</a>
