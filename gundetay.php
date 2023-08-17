@@ -80,3 +80,10 @@
   </div>
 </div>
 
+<footer>
+    <div class="row fixed-bottom" style="background-color: #B0C4DE;">
+        <div class="col-md-6 mt-2 mb-3 ps-5 border-bottom border-primary" style="font-size: 30px;"><a href="homepage.php?id=<?php echo $id; ?>" class="border border-primary ps-2 pe-2" id="left-arrow"><i class="fa-solid fa-arrow-left" style="color: #0743ab;"></i></a></div>
+        <div class="col-md-6 mt-2 mb-3 text-end pe-5 pt-1 border-bottom border-primary" style="font-size: 18px;"><i class="fa-solid fa-thumbtack" style="color: #0743ab;"></i> Görev Sayısı: <?php $sistem->gorevSay($db); ?></div>
+        <div class="col-md-4 text-center mx-auto" >&copy; 2023 Copyright: CAN DAĞDELEN Tüm Hakları Saklıdır.</div>
+    </div>
+</footer>
