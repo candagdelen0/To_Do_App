@@ -1,6 +1,9 @@
 <?php 
   session_start();
   include "_header.php"; 
+  if (!$_SESSION['Kullanici']) {
+    header("Location:index.php");
+  }
 ?>
 <style>
     .dropbtn {
