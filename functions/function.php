@@ -132,15 +132,5 @@
             </div>';
         }
 
-        public function gorevSay($vt) {
-            $userid = $_GET["id"];
-            $gunid = $_GET["gunid"];
-            $query = $this->genelsorgu($vt, "SELECT * FROM tasks WHERE userid = $userid AND gunid = $gunid",1);
-            echo $query->num_rows;
-        }
-
-
-
-
     }
 ?>
