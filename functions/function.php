@@ -71,10 +71,14 @@
             $gunid = $_GET["gunid"];
             if (@$_POST["submit"]) {
                 $task = $_POST["task"];
-                $this->safety($task);
-                $this->genelsorgu($vt, "INSERT INTO tasks (userid, gunid, taskName) VALUES ($userid, $gunid, '$task')",1);
-                echo '<div class="col-md-8 mx-auto mt-3 alert alert-success">Yeni Görev Eklendi</div>';
-                header('refresh: 2, url=gundetay.php?id='.$userid.'&gunid='.$gunid);
+                if ($task != "") {
+                    $this->safety($task);
+                    $this->genelsorgu($vt, "INSERT INTO tasks (userid, gunid, taskName) VALUES ($userid, $gunid, '$task')",1);
+                    echo '<div class="col-md-8 mx-auto mt-3 alert alert-success">Yeni Görev Eklendi</div>';
+                    header('refresh: 2, url=gundetay.php?id='.$userid.'&gunid='.$gunid);
+                } else {
+                    echo '<div class="col-md-8 mx-auto mt-3 alert alert-danger">Görev Bilgisi Boş Bırakılamaz</div>';
+                }
             }
             echo '<div class="row">
                 <div class="border-bottom mt-2">';
@@ -94,24 +98,27 @@
                     </form>
                 </div>
                 <div class="col-md-12 border-bottom mt-2">
-                    <table class="table table-bordered table-striped">
+                    <table class="table table-lg table-bordered table-striped">
                         <thead>
                             <tr>
-                                <th colspan="1">#</th>
-                                <th colspan="3">Task</th>
-                                <th colspan="1">Status</th>
-                                <th colspan="1">Action</th>
+                                <th>Task</th>
+                                <th>Status</th>
+                                <th>Düzenle</th>
+                                <th>Sil</th>
                             </tr>
                         </thead>
                         <tbody>';
                             $diz2 = $this->genelsorgu($vt, "SELECT * FROM tasks WHERE userid = $userid AND gunid = $gunid",1);
                             while ($dizi2 = $diz2->FETCH_ASSOC()):
                                 echo '<tr class="text-center">
-                                    <td colspan="1">
-                                        <a href="checked.php?id='.$dizi2["id"].'&userid='.$userid.'&gunid='.$gunid.'"><i class="fa-solid fa-plus" style="color: #000000;"></i></a> | <a href="failer.php?id='.$dizi2["id"].'&userid='.$userid.'&gunid='.$gunid.'"><i class="fa-solid fa-xmark" style="color: #000000;"></i></a>
+                                    <td>
+                                        <span class="float-start">
+                                            <a href="checked.php?id='.$dizi2["id"].'&userid='.$userid.'&gunid='.$gunid.'"><i class="fa-solid text-primary me-3 fa-plus" style="color: #000000;"></i></a> 
+                                            <a href="failer.php?id='.$dizi2["id"].'&userid='.$userid.'&gunid='.$gunid.'"><i class="fa-solid text-primary fa-xmark" style="color: #000000;"></i></a>
+                                        </span>
+                                        '.$dizi2["taskName"].'
                                     </td>
-                                    <td colspan="3">'.$dizi2["taskName"].'</td>
-                                    <td colspan="1">';
+                                    <td>';
                                         if($dizi2["status"]==0) {
                                             echo "";
                                         } elseif ($dizi2["status"]==1) {
@@ -120,8 +127,10 @@
                                             echo '<i class="fa-solid fa-xmark fs-3" style="color: #ff0000;"></i>';
                                         }
                                     echo '</td>
-                                    <td colspan="1">
+                                    <td>
                                         <a href="editTask.php?id='.$dizi2["id"].'&userid='.$userid.'&gunid='.$gunid.'"><i class="fa-solid fa-pen-to-square me-2 fs-3" style="color: #f5ed00;"></i></a>
+                                    </td>
+                                    <td>
                                         <a href="deleteTask.php?id='.$dizi2["id"].'&userid='.$userid.'&gunid='.$gunid.'"><i class="fa-regular fa-trash-can fs-3" style="color: #eb051c;"></i></a>
                                     </td>
                                 </tr>';         
