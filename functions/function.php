@@ -50,25 +50,12 @@
             endwhile;
         }
 
-        public function basari($vt) {
-            $userid = $_GET["id"];
-            $variable = $this->genelsorgu($vt, "SELECT * FROM basariorani WHERE userid = $userid",1);
-            while ($veri = $variable->FETCH_ASSOC()) {
-                echo $veri["done"];
-            }
-        }
-
-        public function failer($vt) {
-            $userid = $_GET["id"];
-            $variable = $this->genelsorgu($vt, "SELECT * FROM basariorani WHERE userid = $userid",1);
-            while ($veri = $variable->FETCH_ASSOC()) {
-                echo $veri["notdone"];
-            }
-        }
-
         public function detayGetir($vt) {
             $userid = $_GET["id"];
             $gunid = $_GET["gunid"];
+            if (@$_POST["drop"]) {
+                $this->genelsorgu($vt, "DELETE FROM tasks WHERE userid = $userid AND gunid = $gunid",1);
+            }
             if (@$_POST["submit"]) {
                 $task = $_POST["task"];
                 if ($task != "") {
@@ -137,8 +124,12 @@
                             endwhile;
                         echo '</tbody>
                     </table>
+                    <form method="post">
+                        <input type="submit" value="Tümünü Sil" class="btn btn-danger ms-3 mb-3 float-end" name="drop">
+                    </form> 
                 </div>
             </div>';
+
         }
 
     }

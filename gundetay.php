@@ -77,7 +77,7 @@
 
 <div class="container-fluid my-auto">
   <div class="row">
-    <div class="col-md-8 mx-auto bg-light border mt-3">
+    <div class="col-md-8 mx-auto bg-light border mt-3 mb-3">
         <?php $sistem->detayGetir($db); ?>
     </div>
   </div>
