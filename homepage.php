@@ -75,17 +75,14 @@
     <div class="row justify-content-around"> <?php $sistem->haftagetir($db); ?> </div>
     <div class="row fixed-bottom" style="background-color: #B0C4DE;">
         <div class="col-md-10 mt-2 mb-2 text-center border-bottom border-primary" style="font-size: 18px; padding: 5px;">
-          <div class="row">
-            <div class="col-md-4"><i class="fa-solid fa-check text-success"></i> Tamamlanan Görev: <span class="bg-success ms-2 border-success text-white rounded ps-2 pe-2"><?php $sistem->basari($db); ?></span></div>
-            <div class="col-md-4"><i class="fa-solid fa-xmark text-danger"></i> Tamamlanmayan Görev: <span class="bg-danger ms-2 border-danger text-white rounded ps-2 pe-2"><?php $sistem->failer($db); ?></span></div>
-          </div>
+          <!-- Yeni özellik butonları eklenebilir -->
         </div>
         <div class="col-md-2 mt-2 mb-2 text-center border-bottom border-primary" style="font-size: 18px;">
-          <button type="button" class="btn btn-secondary mb-2" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getuser"><i class="fa-solid fa-gear me-2"></i>Sorun bildir</button></div>
+          <button type="button" class="btn btn-secondary mb-2" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getuser"><i class="fa-solid fa-gear"></i></button>
+        </div>
         <div class="col-md-4 text-center mx-auto" >&copy; 2023 Copyright: CAN DAĞDELEN Tüm Hakları Saklıdır.</div>
     </div>
 </div>
-
 
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
