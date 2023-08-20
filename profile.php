@@ -7,7 +7,19 @@
     $sistem = new System;
     @$buton = $_POST["submit"];
     if ($buton):
-
+        $username = $sistem->safety($_POST["username"]);
+        $email = $sistem->safety($_POST["email"]);
+        $query = $sistem->genelsorgu($db, "SELECT * FROM user WHERE email = '$email'",1);
+        while ($q = $query->FETCH_ASSOC()):
+            if($query->num_rows != 0 && $q["id"] != $userid):
+                echo '<div class="col-md-4 mx-auto alert alert-danger mt-3">Girilen e-mail adresi kayıtlı</div>';
+            else:
+                $sistem->genelsorgu($db, "UPDATE user SET ad = '$username', email = '$email' WHERE id=$userid",1);
+                $_SESSION['Kullanici'] = $username;
+                echo '<div class="col-md-4 mx-auto alert alert-success mt-3">Bilgiler Başarıyla Güncellendi</div>';
+                header('refresh: 2, url=homepage.php?id='.$userid);
+            endif;
+        endwhile; 
     endif; 
     $diz = $sistem->genelsorgu($db, "SELECT * FROM user WHERE id=$userid",1);
     while ($dizi = $diz->FETCH_ASSOC()):
