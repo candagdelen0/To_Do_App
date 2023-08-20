@@ -62,13 +62,13 @@
 ?>
 <nav class="navbar navbar-expand-lg bg-info">
     <div class="container">
-      <a href="<?php $_SERVER['PHP_SELF']; ?>" class="navbar-brand"><b>To Do App</b></a>
-        <div class="navbar-nav dropdown me-2">
+        <a href="<?php $_SERVER['PHP_SELF']; ?>" class="navbar-brand"><b>To Do App</b></a>
+        <div class="navbar-nav dropdown">
             <button class="dropbtn nav-item"><?php echo $_SESSION['Kullanici']; ?></button>
-                <div class="dropdown-content">
-                    <a href=""><i class="fa-solid fa-id-card me-2" style="color: #000000;"></i> Bilgilerim</a>
-                    <a href=""><i class="fa-solid fa-arrow-right-from-bracket me-2" style="color: #000000;"></i> Çıkış Yap</a>
-                </div>
+            <div class="dropdown-content">
+                <a href="profile.php?id=<?php echo $id; ?>"><i class="fa-solid fa-id-card me-2" style="color: #000000;"></i> Bilgilerim</a>
+                <a href="logout.php"><i class="fa-solid fa-arrow-right-from-bracket me-2" style="color: #000000;"></i> Çıkış Yap</a>
+            </div>
         </div> 
     </div>
 </nav>
