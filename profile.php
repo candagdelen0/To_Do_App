@@ -2,6 +2,9 @@
     session_start();
     require "functions/function.php";
     include "_header.php";
+    if (!$_SESSION['Kullanici']) {
+        header("Location:index.php");
+    }
 
     $userid = $_GET["id"];
     $sistem = new System;
