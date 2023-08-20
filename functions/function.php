@@ -90,8 +90,8 @@
                             <tr>
                                 <th>Task</th>
                                 <th>Status</th>
-                                <th>Düzenle</th>
-                                <th>Sil</th>
+                                <th>Edit</th>
+                                <th>Delete</th>
                             </tr>
                         </thead>
                         <tbody>';
