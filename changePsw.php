@@ -6,7 +6,15 @@
     $userid = $_GET["id"];
 
     if(@$_POST["submit"]):
-       //post işlemi
+        $yenipsw = md5(sha1($sistem->safety($_POST["yenipsw"])));
+        $reyenipsw = md5(sha1($sistem->safety($_POST["reyenipsw"])));
+        if($yenipsw != $reyenipsw):
+            echo '<div class="col-md-4 mx-auto alert alert-danger mt-3">Girilen Parolalar Uyumsuz</div>';
+        else:
+            $sistem->genelsorgu($db, "UPDATE user SET sifre = '$yenipsw' WHERE id=$userid",1);
+            echo '<div class="col-md-4 mx-auto alert alert-success mt-3">Parola Başarıyla Güncellendi</div>';
+            header('refresh: 2, url=homepage.php?id='.$userid);
+        endif;
     endif;
     $diz = $sistem->genelsorgu($db, "SELECT * FROM user WHERE id=$userid",1);
     while ($dizi = $diz->FETCH_ASSOC()):
