@@ -1,7 +1,10 @@
 <?php 
     require "functions/function.php";
     include "_header.php";
-    
+    if (!$_SESSION['Kullanici']) {
+        header("Location:index.php");
+    }
+
     $sistem = new System;
     $userid = $_GET["id"];
 
