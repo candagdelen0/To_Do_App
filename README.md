@@ -4,3 +4,4 @@
 > 2. *Uygulama Ekranı Sayfası* <br>
 >> ![İçerik](resim/anaekran.png) <br>
 > *İç Uygulama Ekranı* <br>
+>> ![İçerik](resim/icekran.png) <br>
