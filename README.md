@@ -2,3 +2,4 @@
 > 1. *Ana sayfa görüntüsü* <br>
 >> ![Anasayfa](resim/anasayfa.png) <br>
 > 2. *İçerik Sayfası* <br>
+>> ![İçerik](resim/anaekran.png) <br>
