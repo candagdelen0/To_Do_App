@@ -1,10 +1,9 @@
 <?php 
-    session_start();
     require "functions/function.php";
     include "_header.php";
-    if (!$_SESSION['Kullanici']) {
+    if (!$_COOKIE['user']) {
         header("Location:index.php");
-    }
+      }
 
     $userid = $_GET["id"];
     $sistem = new System;
@@ -18,7 +17,7 @@
                 echo '<div class="col-md-4 mx-auto alert alert-danger mt-3">Girilen e-mail adresi kayıtlı</div>';
             else:
                 $sistem->genelsorgu($db, "UPDATE user SET ad = '$username', email = '$email' WHERE id=$userid",1);
-                $_SESSION['Kullanici'] = $username;
+                setcookie("user", $username, time()+60*60*24);
                 echo '<div class="col-md-4 mx-auto alert alert-success mt-3">Bilgiler Başarıyla Güncellendi</div>';
                 header('refresh: 2, url=homepage.php?id='.$userid);
             endif;
@@ -36,7 +35,7 @@
                 <form method="post" enctype="multipart/form-data">
                     <div class="mb-3">
                         <label for="username">Kullanıcı Adı</label>
-                        <input type="text" name="username" class="form-control" value="<?php echo $_SESSION['Kullanici']; ?>" required>
+                        <input type="text" name="username" class="form-control" value="<?php echo $_COOKIE['user']; ?>" required>
                     </div>
                     <div class="mb-3">
                         <label for="email">Email Adresi</label>
