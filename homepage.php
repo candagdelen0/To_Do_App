@@ -11,13 +11,15 @@
   $diz = $sistem->genelsorgu($db, "SELECT * FROM user WHERE id= $id",1);
   while ($dizi = $diz->FETCH_ASSOC()):
 ?>
+<link rel="stylesheet" href="dropdown.css">
 <nav class="navbar navbar-expand-lg bg-info">
     <div class="container">
         <a href="<?php $_SERVER['PHP_SELF']; ?>" class="navbar-brand"><b>To Do App</b></a>
         <div class="navbar-nav dropdown">
-            <button class="dropbtn nav-item"><?php echo $_SESSION['Kullanici']; ?></button>
+            <button class="dropbtn nav-item"><?php echo $_COOKIE['user']; ?></button>
             <div class="dropdown-content">
                 <a href="profile.php?id=<?php echo $id; ?>"><i class="fa-solid fa-id-card me-2" style="color: #000000;"></i> Bilgilerim</a>
+                <a href="report.php?id=<?php echo $id; ?>"><i class="fa-regular fa-circle-question" style="color: #000000;"></i> Durum Raporu</a>
                 <a href="logout.php"><i class="fa-solid fa-arrow-right-from-bracket me-2" style="color: #000000;"></i> Çıkış Yap</a>
             </div>
         </div> 
@@ -28,9 +30,7 @@
 <div class="container">
     <div class="row justify-content-around"> <?php $sistem->haftagetir($db); ?> </div>
     <div class="row fixed-bottom" style="background-color: #B0C4DE;">
-        <div class="col-md-10 mt-2 mb-2 text-center border-bottom border-primary" style="font-size: 18px; padding: 5px;">
-          <!-- Yeni özellik butonları eklenebilir -->
-        </div>
+        <div class="col-md-10 mt-2 mb-2 text-center border-bottom border-primary" style="font-size: 18px; padding: 5px;"></div>
         <div class="col-md-2 mt-2 mb-2 text-center border-bottom border-primary" style="font-size: 18px;">
           <button type="button" class="btn btn-secondary mb-2" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getuser"><i class="fa-solid fa-gear"></i></button>
         </div>
