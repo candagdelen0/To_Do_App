@@ -30,14 +30,13 @@
                 if ($password != $dizi["sifre"]) {
                     echo '<div class="col-md-4 mx-auto alert alert-danger mt-3">Girilen şifre hatalı</div>';
                 } else {
-                    $_SESSION['Kullanici'] = $dizi["ad"];
+                    $user = $dizi["ad"];
+                    setcookie("user",$user, time() + 60*60*24);
                     header("Location: homepage.php?id=".$dizi["id"]);
                 }
             }
         }
-        
     }
-
 ?>
 
 <div class="container my-3">
