@@ -1,6 +1,6 @@
 <?php
-    session_start();
     require "functions/connection.php";
-    session_destroy();
+    $username = $_COOKIE["user"];
+    setcookie("user", $username, time() - 10);
     header("Location: index.php");
 ?>
