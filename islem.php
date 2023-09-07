@@ -75,5 +75,27 @@
                 endwhile; 
             endif; 
             break;
+        
+        case 'delete':
+            $taskid = $sistem->safety($_GET["id"]);
+            $oran = $sistem->genelsorgu($db, "SELECT * FROM basariorani WHERE userid = $userid",1);
+            $orangor = $oran->FETCH_ASSOC();
+            $done = $orangor["done"];
+            $notdone = $orangor["notdone"];
+            $beklemede = $orangor["beklemede"];
+            $gorev = $sistem->genelsorgu($db, "SELECT * FROM tasks WHERE id = $taskid",1);
+            $gorevgor = $gorev->FETCH_ASSOC();
+            if ($gorevgor["status"] == 0):
+                $beklemede = $beklemede - 1;
+            elseif ($gorevgor["status"] == 1):
+                $done -= 1;
+            elseif ($gorevgor["status"] == 2):
+                $notdone -= 1;
+            endif;
+            $tasknum = $done + $notdone + $beklemede;
+            $sistem->genelsorgu($db, "UPDATE basariorani SET tasknum = $tasknum, beklemede = $beklemede, done = $done, notdone = $notdone WHERE userid = $userid",1);
+            $sistem->genelsorgu($db, "DELETE FROM tasks WHERE id = $taskid",1);
+            header("Location: gundetay.php?id=".$userid."&gunid=".$gunid." ");
+            break;
     }
 ?>
