@@ -20,4 +20,79 @@
 </div>
 </nav>
 <?php endwhile; ?>
+<div class="container">
+    <div class="row">
+        <div class="col-12 mx-auto mt-3">
+            <div class="row">
+                <h3 class="text-center mb-2">Görevler Durum Raporu</h3>
+            </div>
+            <?php 
+                $say = $sistem->genelsorgu($db, "SELECT * FROM tasks WHERE userid= $id",1);
+                $sayGorev = $say->num_rows;
+                if($sayGorev != 0):
+            ?>
+            <div class="row">
+                <div class="col-8"><?php 
+                    $renk = "dark";
+                    echo '<ol>'; 
+                    while ($query = $say->FETCH_ASSOC()):
+                        if ($query["status"] == 1):
+                            $renk = "info";
+                        elseif ($query["status"] == 2):
+                            $renk = "danger";
+                        else:
+                            $renk = "dark";
+                        endif;
+                        echo '<li class="text-'.$renk.'">'.$query["taskName"].'</li>';
+                    endwhile;
+                    echo '</ol>';
+                ?></div>
+                <div class="col-4">
+                    <div class="row">
+                        <?php 
+                            $ver = $sistem->genelsorgu($db, "SELECT * FROM basariorani WHERE userid = $id",1);
+                            $veri = $ver->FETCH_ASSOC();
+                            $tasknum = $veri["tasknum"];
+                            $done = $veri["done"];
+                            $notdone = $veri["notdone"];
+                            $basari = ($done * 100)/$tasknum;
+                            $basarisiz = ($notdone * 100)/$tasknum;
+                        ?>
+                        <div class="col-4 mt-4 mx-auto border border-info bg-light text-primary text-center p-2 pb-3">
+                            <p style="font-weight: bold;" class="mt-3"><i class="fa-solid fa-clipboard-check"></i> Done</p>
+                            <span class="text-white border border-danger bg-danger p-1"> % <?php echo number_format($basari,2,'.',','); ?></span>
+                        </div>
+                        <div class="col-4 mt-4 mx-auto border border-info bg-light text-primary p-2 pb-3 text-center">
+                            <p style="font-weight: bold;" class="mt-3"><i class="fa-regular fa-file-excel"></i> Not Done</p>
+                            <span class="text-white border border-danger bg-danger p-1"> % <?php echo number_format($basarisiz,2,'.',','); ?> </span>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-12">
+                            <div class="row mt-2">
+                                <div class="col-8"></div>
+                                <div class="col-4"><input type="submit" value="Verileri Sil" class="btn btn-warning"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <?php if (@$_POST["submit"]) {
+                    // verileri silme işlemi eklenecek
+                } ?>
+                <?php else: ?>
+                    <div class="col-6 mx-auto">
+                    <div class="col-4 mt-4 mx-auto border border-info bg-light text-primary text-center p-2 pb-3">
+                            <p style="font-weight: bold;" class="mt-3"><i class="fa-solid fa-clipboard-check"></i> Done</p>
+                            <span class="text-white border border-danger bg-danger p-1"> % 0</span>
+                        </div>
+                        <div class="col-4 mt-4 mx-auto border border-info bg-light text-primary p-2 pb-3 text-center">
+                            <p style="font-weight: bold;" class="mt-3"><i class="fa-regular fa-file-excel"></i> Not Done</p>
+                            <span class="text-white border border-danger bg-danger p-1"> % 0 </span>
+                        </div>
+                    </div>
+                <?php endif; ?>
+            </div>
+        </div>
+    </div>
+</div>
 
