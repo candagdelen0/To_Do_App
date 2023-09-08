@@ -1,4 +1,5 @@
 <?php
+    ob_start();
     include "_header.php";
     require "functions/function.php";
     $sistem = new System;
@@ -71,14 +72,20 @@
                         <div class="col-12">
                             <div class="row mt-2">
                                 <div class="col-8"></div>
-                                <div class="col-4"><input type="submit" value="Verileri Sil" class="btn btn-warning"></div>
+                                <div class="col-4">
+                                    <form method="post">
+                                        <input type="submit" value="Verileri Sil" class="btn btn-warning" name="submit">
+                                    </form>
+                                </div>
+                                <?php if (@$_POST["submit"]) {
+                                    $sistem->genelsorgu($db, "DELETE FROM tasks WHERE userid = $id",1);
+                                    $sistem->genelsorgu($db, "DELETE FROM basariorani WHERE userid = $id",1);
+                                    header("Location: homepage.php?id=".$id);
+                                } ?>
                             </div>
                         </div>
                     </div>
                 </div>
-                <?php if (@$_POST["submit"]) {
-                    // verileri silme işlemi eklenecek
-                } ?>
                 <?php else: ?>
                     <div class="col-6 mx-auto">
                     <div class="col-4 mt-4 mx-auto border border-info bg-light text-primary text-center p-2 pb-3">
@@ -95,4 +102,3 @@
         </div>
     </div>
 </div>
-
